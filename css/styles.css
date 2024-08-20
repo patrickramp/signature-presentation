@@ -1,0 +1,104 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif; /* Consistent and accessible font */
+    background-color: #ede0f5; /* Light background color */
+    background-image: url("/static/bg2.png"); /* Background image */
+    background-size: cover; /* Ensure the background image covers the entire viewport */
+    color: #333; /* Default text color */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align the content at the top to prevent cut-off */
+    min-height: 100vh; /* Use minimum height instead of fixed 100vh */
+    margin: 0;
+    padding: 20px; /* Add padding for breathing space on smaller screens */
+}
+
+/* Container styling for the main content */
+.container {
+    background: #fafafa; /* Light background for contrast */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(125, 60, 152, 0.5); /* Subtle shadow with transparency */
+    max-width: 500px; /* Max width for container */
+    width: 100%; /* Ensure full width responsiveness */
+    text-align: center; /* Center text inside the container */
+    box-sizing: border-box; /* Include padding in element's width and height */
+    color: #4a235a; /* Default text color */
+}
+
+/* Header styling */
+h1 {
+    margin-top: 0; /* Remove default margin from the top */
+}
+
+/* Form layout and spacing */
+form {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+    justify-content: space-between; /* Even spacing between form elements */
+}
+
+/* Label styling */
+label {
+    margin: 10px 0 5px 0; /* Add space around labels */
+}
+
+/* Input field styling */
+input {
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid #ccc; /* Light border color */
+    border-radius: 4px;
+    min-width: 75%; /* Ensure input fields are wide enough */
+    font-size: 16px; /* Accessible font size */
+    line-height: 1.5; /* Comfortable line spacing */
+}
+
+/* Input field focus effect for better accessibility */
+input:focus {
+    outline: none; /* Remove default outline */
+    border-color: #7d3c98; /* Highlighted border color */
+    box-shadow: 0 0 5px rgba(125, 60, 152, 0.5); /* Subtle glow effect */
+}
+
+/* Dropdown (select) styling */
+select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Button styling */
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #7d3c98; /* Primary button color */
+    color: #fff; /* White text for contrast */
+    cursor: pointer; /* Pointer cursor for clickable buttons */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #4a235a; /* Darker shade on hover */
+}
+
+/* Styling for the signature output area */
+.signature-output {
+    margin-top: 20px;
+    padding: 10px;
+    background: #fff; /* White background for readability */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow-y: auto; /* Enable vertical scroll if content overflows */
+    text-align: left; /* Ensure the text inside is left-aligned */
+    height: auto; /* Adjust height automatically */
+    font-size: 12pt; /* Accessible font size */
+    font-family: Arial, sans-serif; /* Ensure consistent font usage */
+}
+/* Additional styles could go here, if necessary */
+

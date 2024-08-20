@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Character encoding and viewport settings -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Page title and favicon -->
+  <title>Email Signature Generator</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/x-icon" href="static/favicon.png">
+
+  <!-- Disables automatic phone/email link detection on mobile devices -->
+  <meta name="format-detection" content="telephone=no,email=no,address=no">
+</head>
+
+<body>
+  <!-- Main container centered on the page -->
+  <div class="container" style="text-align: center;">
+    <h1>Email Signature Generator</h1>
+    
+    <!-- Signature form for input fields -->
+    <form id="signature-form">
+      
+      <!-- Full Name input (required) -->
+      <label for="name">Full Name (Required):</label>
+      <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <input type="text" id="name" required placeholder="Enter your full preferred name, First and Last">
+
+        <!-- Pronouns dropdown selection (optional) -->
+        <select id="pronouns">
+          <option value="" selected>Pronouns</option>
+          <option value="none">None</option>
+          <option value="she/her">she/her</option>
+          <option value="he/him">he/him</option>
+          <option value="they/them">they/them</option>
+          <option value="it/its">it/its</option>
+          <option value="ae/aer">ae/aer</option>
+          <option value="ey/em">ey/em</option>
+          <option value="fae/faer">fae/faer</option>
+          <option value="xe/xem">xe/xem</option>
+          <option value="ze/hir">ze/hir</option>
+          <option value="ze/zir">ze/zir</option>
+          <option value="">Custom</option>
+        </select>
+      </div>
+
+      <!-- Official Title input (required) -->
+      <label for="title">Official Title (Required):</label>
+      <input type="text" id="title" required placeholder="Enter your official title as listed in Workday">
+
+      <!-- Alternate Title input (optional) -->
+      <label for="alternateTitle">Alternate Title (Optional):</label>
+      <input type="text" id="alternateTitle" placeholder="Enter your approved supplimentary title (If any)">
+
+      <!-- Branch Address input (optional) -->
+      <label for="address">Work Address (Street, City, State, Zip):</label>
+      <input type="text" id="address" placeholder="e.g. 123 Main Street, Anytown, NC 12345">
+
+      <!-- Mailcode input (optional) -->
+      <label for="mailcode">Mail-code (From Workday):</label>
+      <input type="text" id="mailcode" placeholder="e.g. 12-100-456-81">
+
+      <!-- Office Phone input (required) -->
+      <label for="phone">Office Phone (Required):</label>
+      <input type="tel" id="phone" required placeholder="e.g. (123)456-7890">
+
+      <!-- Fax input (optional) -->
+      <label for="fax">Fax (Optional):</label>
+      <input type="tel" id="fax" placeholder="Enter your fax number (if any)">
+
+      <!-- Work Email input (required) -->
+      <label for="email">Email (Required):</label>
+      <input type="email" id="email" required placeholder="Enter your work email">
+
+      <!-- Generate Signature button -->
+      <button type="submit">Generate Signature</button>
+    </form>
+    <br>
+
+    <!-- Signature output area (hidden initially) -->
+    <div id="signature-output" style="display: none; text-align: left;"></div>
+    <br>
+
+    <!-- Copy to Clipboard button (hidden initially) -->
+    <button id="copy-button" style="display: none;">Copy to Clipboard</button>
+
+    <!-- JavaScript file -->
+    <script src="js/signature.js" type="text/javascript">
+    </script>
+  </div>
+</body>
+</html>
+
