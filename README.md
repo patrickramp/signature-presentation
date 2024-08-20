@@ -1,6 +1,6 @@
 # Signature Presentation and Creation Tool
 
-A JavaScript web based presentation and signature creation tool.<br>
+A JavaScript web-based presentation and signature creation tool.<br>
 
 This project is designed to help users understand the importance of a professional email signature and effortlessly create an email signature formatted to match corporate guidelines. It includes:
 
@@ -30,3 +30,6 @@ All signature customization takes place in js/signature.js and css/styles.css. E
 
 Thanks to the [Gnab/Remark project](https://github.com/gnab/remark) for the excellent, easy to use, web presentation framework.    
 
+
+![image](https://github.com/user-attachments/assets/ed6d9b1c-b4dd-4dcd-83e1-3994880ee531)
+![image](https://github.com/user-attachments/assets/31bfbb6f-4ada-439a-8977-decd93dea450)
