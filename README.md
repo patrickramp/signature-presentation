@@ -6,7 +6,7 @@ This project is designed to help users understand the importance of a profession
 
 1. **JavaScript-Based Presentation:** An interactive presentation that educates users about the importance of having a consistent corporate signature and  how to use the email signature creation tool to add their signature to Outlook. 
 
-2. **Email Signature Creator:** A JavaScript web tool that allows users to generate a corporate compliant email signatures. Users can input details like name, title, contact information, and generate a signature that complies with their organization's brand identity. This application also adds a unique hash of the clients signature to the logo metadata to help verify that present signature was created by this application.
+2. **Email Signature Creator:** A JavaScript web tool that allows users to generate a corporate compliant email signatures. Users can input details like name, title, contact information, and generate a signature that complies with their organization's brand identity. This application also adds a unique hash of the clients email address to the logo metadata to help verify the signature was created by this application.
 
 ## Live Demo
 
@@ -30,6 +30,7 @@ All signature customization takes place in js/signature.js and css/styles.css. E
 
 Thanks to the [Gnab/Remark project](https://github.com/gnab/remark) for the excellent, easy to use, web presentation framework.    
 
+## Screen Shots
 
 ![image](https://github.com/user-attachments/assets/ed6d9b1c-b4dd-4dcd-83e1-3994880ee531)
 ![image](https://github.com/user-attachments/assets/31bfbb6f-4ada-439a-8977-decd93dea450)
