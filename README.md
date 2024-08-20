@@ -24,9 +24,9 @@ open index.html
 
 ## Customization
 
-All signature customization takes place in js/signature.js and css/styles.css. Edit these files to adjust the details of the output signature. All slides can be edited from one file within index.html. Contents are written in markdown. See [Gnab/Remark project](https://github.com/gnab/remark) wiki for formatting and style option.      
+All signature customization takes place in js/signature.js and css/styles.css. Edit these files to set the appearance of the output signature. All slides can be edited from within index.html. Contents are written in markdown. See [Gnab/Remark project](https://github.com/gnab/remark) wiki for formatting and style option.      
 
 ## Credits 
 
-Thanks to the [Gnab/Remark project](https://github.com/gnab/remark) for the excellent, easy to use web presentation framework.    
+Thanks to the [Gnab/Remark project](https://github.com/gnab/remark) for the excellent, easy to use, web presentation framework.    
 
