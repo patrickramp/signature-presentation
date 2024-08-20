@@ -2,11 +2,11 @@
 
 A JavaScript web-based presentation and corporate email signature creation tool.<br>
 
-This project is designed to help users understand the importance of a professional email signature and effortlessly create an email signature formatted to match corporate guidelines. It includes:
+This project is designed to help users understand the importance of a professional email signature and effortlessly create an email signature formatted to match corporate guidelines in a verifiable manner. It includes:
 
 1. **JavaScript-Based Presentation:** An interactive presentation that educates users about the importance of having a consistent corporate signature and  how to use the email signature creation tool to add their signature to Outlook. 
 
-2. **Email Signature Creator:** A JavaScript web tool that allows users to generate a corporate compliant email signatures. Users can input details like name, title, contact information, and generate a signature that complies with their organization's brand identity.
+2. **Email Signature Creator:** A JavaScript web tool that allows users to generate a corporate compliant email signatures. Users can input details like name, title, contact information, and generate a signature that complies with their organization's brand identity. This application also adds a unique hash of the clients signature to the logo metadata to help verify that present signature was created by this application.
 
 ## Live Demo
 
