@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyButton = document.getElementById('copy-button');
 
     // Handle form submission event
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => { // Added `async` here
         event.preventDefault(); // Prevent the form from refreshing the page
 
         // Define brand colors (for consistent styling)
@@ -30,6 +30,26 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Generate the hash (this function is called now)
+        async function generateHash() {
+            // Select the HTML content to hash
+            const content = `${name}${title}${phone}${email}secret`;
+
+            // Encode the content into a Uint8Array
+            const encoder = new TextEncoder();
+            const data = encoder.encode(content);
+
+            // Generate the SHA-256 hash
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+
+            // Convert the hash buffer to a hex string
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Await the generated hash
+        const hashHex = await generateHash();
+
         // Build the HTML for the signature
         const signatureHTML = `
         <div style="color: ${color1}; font-family: Arial, sans-serif;">
@@ -42,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${mailcode ? `M/C: ${mailcode}<br>` : ''}
             Office: ${phone} ${fax ? ` | Fax: ${fax}` : ''}<br>
             <a href="mailto:${email}" style="color: ${color1}; text-decoration: none;">${email}</a><br>
+            <img src="static/logo2.jpg" alt="Company_Logo_ID=${hashHex}" width="100">
         </div>`;
 
         // Insert the generated signature into the output container
@@ -63,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Execute the copy command
             document.execCommand('copy');
             alert('Signature copied to clipboard!');
-            window.location.href = 'index.html#6';
         } catch (err) {
             alert('Failed to copy the signature.');
         }
