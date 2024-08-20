@@ -1,6 +1,6 @@
-# Signature Presentation and Creation Tool
+# Email Signature Presentation and Creation Tool
 
-A JavaScript web-based presentation and signature creation tool.<br>
+A JavaScript web-based presentation and corporate email signature creation tool.<br>
 
 This project is designed to help users understand the importance of a professional email signature and effortlessly create an email signature formatted to match corporate guidelines. It includes:
 
