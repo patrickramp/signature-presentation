@@ -8,22 +8,16 @@ This project is designed to help users understand the importance of a profession
 
 2. **Email Signature Creator:** A JavaScript web tool that allows users to generate a corporate compliant email signatures. Users can input details like name, title, contact information, and generate a signature that complies with their organization's brand identity.
 
-## Features
-
-- Step-by-step presentation with animations and interactive elements.
-- User-friendly interface for creating custom email signatures.
-- Preview of the signature before copying to email client.
-
 ## Live Demo
 
-Click [Here](app.megabit.rodeo) for a live working demo of this project. 
+Click [Here](https://app.megabit.rodeo) for a live working demo of this project. 
 
 ## Getting Started
 
 To get started, clone the repository and open the `index.html` file in your browser:
 
 ```bash
-git clone https://github.com/your-username/email-signature-tool.git
+git clone https://github.com/patrickramp/signature-presentation
 cd email-signature-tool
 open index.html
 ```
