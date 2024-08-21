@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Generate the hash (this function is called now)
         async function generateHash() {
             // Select the HTML content to hash
-            const content = `${name}${title}${phone}${email}secret`;
+            const content = `${email}secret`;
 
             // Encode the content into a Uint8Array
             const encoder = new TextEncoder();
@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Execute the copy command
             document.execCommand('copy');
             alert('Signature copied to clipboard!');
+            window.location.href = 'https://app.megabit.rodeo/#6';
         } catch (err) {
             alert('Failed to copy the signature.');
         }
