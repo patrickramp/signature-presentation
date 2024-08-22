@@ -25,12 +25,13 @@
       
       <!-- Full Name input (required) -->
       <label for="name">Full Name (Required):</label>
-      <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-        <input type="text" id="name" required placeholder="Enter your full preferred name, First and Last">
+      <div style="display: flex; justify-content: space-between; max-width: 100%;>
+  align-items: center; ">
+        <input type="text" style="width: 75%" id="name" required placeholder="Enter your full preferred name, First and Last">
 
         <!-- Pronouns dropdown selection (optional) -->
-        <select id="pronouns">
-          <option value="" selected>Pronouns</option>
+        <select type="select" style="width: 20%" id="pronouns">
+          <option value="" selected>Pronoun</option>
           <option value="none">None</option>
           <option value="she/her">she/her</option>
           <option value="he/him">he/him</option>
@@ -62,9 +63,17 @@
       <label for="mailcode">Mail-code (From Workday):</label>
       <input type="text" id="mailcode" placeholder="e.g. 12-100-456-81">
 
-      <!-- Office Phone input (required) -->
-      <label for="phone">Office Phone (Required):</label>
-      <input type="tel" id="phone" required placeholder="e.g. (123)456-7890">
+
+      <!-- Phone number and type selection (required) -->
+      <label for="phone">Phone Number (Required):</label>
+      <div style="display: flex; justify-content: space-between; max-width: 100%;">
+      <input type="tel" id="phone" style="width: 80%" required placeholder="e.g. (123)456-7890">
+        <!-- Phone type dropdown selection -->
+        <select typer="select" id="phoneType">
+          <option value="Office" selected>Office</option>
+          <option value="Cell">Cell</option>
+	</select>
+      </div>
 
       <!-- Fax input (optional) -->
       <label for="fax">Fax (Optional):</label>

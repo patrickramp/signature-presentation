@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const alternateTitle = document.getElementById('alternateTitle').value.trim();
         const address = document.getElementById('address').value.trim();
         const mailcode = document.getElementById('mailcode').value.trim();
+        const phoneType = document.getElementById('phoneType').value.trim();
         const phone = document.getElementById('phone').value.trim();
         const fax = document.getElementById('fax').value.trim();
         const email = document.getElementById('email').value.trim();
@@ -53,16 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // Build the HTML for the signature
         const signatureHTML = `
         <div style="color: ${color1}; font-family: Arial, sans-serif;">
-            <strong>${name}</strong> ${pronouns ? `(${pronouns})` : ''}
+          <b>${name}</b> ${pronouns ? `(${pronouns})` : ''}
         </div>
-        <div style="color: ${color2}; font-family: Arial, sans-serif;">
-            <b>${title}</b><br>
-            ${alternateTitle ? `${alternateTitle}<br>` : ''}
-            ${address ? `${address}<br>` : ''}
-            ${mailcode ? `M/C: ${mailcode}<br>` : ''}
-            Office: ${phone} ${fax ? ` | Fax: ${fax}` : ''}<br>
-            <a href="mailto:${email}" style="color: ${color1}; text-decoration: none;">${email}</a><br>
-            <img src="static/logo2.jpg" alt="Company_Logo_ID=${hashHex}" width="100">
+        <div style="color: ${color2 || '#000'}; font-family: Arial, sans-serif;">
+          <b>${title || ''}</b><br>
+    	    <b>${alternateTitle ? `${alternateTitle}<br>` : ''}</b>
+    	    ${address ? `${address}<br>` : ''}
+    	    ${mailcode ? `M/C: ${mailcode}<br>` : ''}
+    	    ${phoneType ? `${phoneType}: ${phone} ${fax ? ` | Fax: ${fax}` : ''}<br>` : ''}
+    	    <a href="mailto:${email || ''}" style="color: ${color1 || '#000'}; text-decoration: none;">${email || ''}</a><br>
+    	    <img src="static/logo2.jpg" alt="Company_Logo_ID=${hashHex || ''}" width="100">
         </div>`;
 
         // Insert the generated signature into the output container

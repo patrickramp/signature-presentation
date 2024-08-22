@@ -26,6 +26,13 @@ body {
     color: #4a235a; /* Default text color */
 }
 
+.input-group {
+  display: flex;
+  justify-content: space-between; 
+  max-width: 100%;
+  align-items: center; /* Vertically aligns the elements */
+}
+
 /* Header styling */
 h1 {
     margin-top: 0; /* Remove default margin from the top */
@@ -45,11 +52,11 @@ label {
 
 /* Input field styling */
 input {
+    display:flex;	
     margin-bottom: 5px;
     padding: 5px;
     border: 1px solid #ccc; /* Light border color */
     border-radius: 4px;
-    min-width: 75%; /* Ensure input fields are wide enough */
     font-size: 16px; /* Accessible font size */
     line-height: 1.5; /* Comfortable line spacing */
 }
@@ -100,5 +107,5 @@ button:hover {
     font-size: 12pt; /* Accessible font size */
     font-family: Arial, sans-serif; /* Ensure consistent font usage */
 }
-/* Additional styles could go here, if necessary */
+
 
