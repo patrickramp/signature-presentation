@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('email').value.trim();
 
         // Define the secret string
-        const secret = 'secret';
+        const secret = 'secret2';
 
         // Ensure required fields are filled
         if (!name || !title || !email) {
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Generate the hash (this function is called now)
-        async function generateHash(email, secret) {
+        async function generateHash() {
             
             // Combine the input email with a secret string
             const content = `${email}${secret}`;
