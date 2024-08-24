@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const fax = document.getElementById('fax').value.trim();
         const email = document.getElementById('email').value.trim();
 
+        // Define the secret string
+        const secret = 'secret';
+
         // Ensure required fields are filled
         if (!name || !title || !email) {
             alert('Please fill in all required fields.');
@@ -32,9 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Generate the hash (this function is called now)
-        async function generateHash() {
-            // Select the HTML content to hash
-            const content = `${email}secret`;
+        async function generateHash(email, secret) {
+            
+            // Combine the input email with a secret string
+            const content = `${email}${secret}`;
 
             // Encode the content into a Uint8Array
             const encoder = new TextEncoder();
@@ -45,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Convert the hash buffer to a hex string
             const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
         }
 
         // Await the generated hash
@@ -53,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Build the HTML for the signature
         const signatureHTML = `
-        <div style="color: ${color1}; font-family: Arial, sans-serif;">
+        <div style="color: ${color1 || '#000'}; font-family: Arial, sans-serif;">
           <b>${name}</b> ${pronouns ? `(${pronouns})` : ''}
         </div>
         <div style="color: ${color2 || '#000'}; font-family: Arial, sans-serif;">
@@ -85,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Execute the copy command
             document.execCommand('copy');
             alert('Signature copied to clipboard!');
-            window.location.href = 'https://app.megabit.rodeo/#6';
+            window.location.href = './index.html#6';
         } catch (err) {
             alert('Failed to copy the signature.');
         }
