@@ -2,7 +2,7 @@
 body {
     font-family: Arial, sans-serif; /* Consistent and accessible font */
     background-color: #ede0f5; /* Light background color */
-    background-image: url("/static/bg2.png"); /* Background image */
+    background-image: url("../static/bg2.png"); /* Background image */
     background-size: cover; /* Ensure the background image covers the entire viewport */
     color: #333; /* Default text color */
     display: flex;
