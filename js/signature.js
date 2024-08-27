@@ -1,19 +1,18 @@
-// Wait until the DOM is fully loaded before executing any JavaScript
 document.addEventListener('DOMContentLoaded', () => {
     // Cache DOM elements for easier access and better performance
     const form = document.getElementById('signature-form');
     const signatureOutput = document.getElementById('signature-output');
     const copyButton = document.getElementById('copy-button');
 
+    // Define brand colors for consistent styling
+    const color1 = '#2d1a47'; // Primary text color
+    const color2 = '#a9a9a9'; // Secondary text color
+
     // Handle form submission event
-    form.addEventListener('submit', async (event) => { // Added `async` here
+    form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Prevent the form from refreshing the page
 
-        // Define brand colors (for consistent styling)
-        const color1 = '#2d1a47'; // Primary text color
-        const color2 = '#a9a9a9'; // Secondary text color
-
-        // Gather input values from the form
+        // Gather input values from the form and trim whitespace
         const name = document.getElementById('name').value.trim();
         const pronouns = document.getElementById('pronouns').value.trim();
         const title = document.getElementById('title').value.trim();
@@ -25,73 +24,81 @@ document.addEventListener('DOMContentLoaded', () => {
         const fax = document.getElementById('fax').value.trim();
         const email = document.getElementById('email').value.trim();
 
-        // Define the secret string
-        const secret = 'secret2';
-
         // Ensure required fields are filled
         if (!name || !title || !email) {
             alert('Please fill in all required fields.');
             return;
         }
 
-        // Generate the hash (this function is called now)
-        async function generateHash() {
-            
-            // Combine the input email with a secret string
-            const content = `${email}${secret}`;
+        // Function to generate a signature for the email
+        async function generateSignature(email) {
+            try {
+                const response = await fetch('http://localhost:8888/sign', { // Update URL if using HTTPS
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', // Specify content type
+                    },
+                    body: JSON.stringify({ email }),
+                });
 
-            // Encode the content into a Uint8Array
-            const encoder = new TextEncoder();
-            const data = encoder.encode(content);
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
 
-            // Generate the SHA-256 hash
-            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-
-            // Convert the hash buffer to a hex string
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+                const data = await response.json();
+                return data.signature; // Return the generated signature
+            } catch (error) {
+                console.error('Error signing email:', error);
+                throw error; // Re-throw the error for further handling if needed
+            }
         }
 
-        // Await the generated hash
-        const hashHex = await generateHash();
+        // Retrieve the generated signature from the server
+        const fingerprint = await generateSignature(email);
 
         // Build the HTML for the signature
         const signatureHTML = `
-        <div style="color: ${color1 || '#000'}; font-family: Arial, sans-serif;">
-          <b>${name}</b> ${pronouns ? `(${pronouns})` : ''}
-        </div>
-        <div style="color: ${color2 || '#000'}; font-family: Arial, sans-serif;">
-          <b>${title || ''}</b><br>
-    	    <b>${alternateTitle ? `${alternateTitle}<br>` : ''}</b>
-    	    ${address ? `${address}<br>` : ''}
-    	    ${mailcode ? `M/C: ${mailcode}<br>` : ''}
-    	    ${phoneType ? `${phoneType}: ${phone} ${fax ? ` | Fax: ${fax}` : ''}<br>` : ''}
-    	    <a href="mailto:${email || ''}" style="color: ${color1 || '#000'}; text-decoration: none;">${email || ''}</a><br>
-    	    <img src="static/logo2.jpg" alt="Company_Logo_ID=${hashHex || ''}" width="100">
-        </div>`;
+            <div style="color: ${color1}; font-family: Arial, sans-serif;">
+                <b>${name}</b> ${pronouns ? `(${pronouns})` : ''}
+            </div>
+            <div style="color: ${color2}; font-family: Arial, sans-serif;">
+                <b>${title}</b><br>
+                ${alternateTitle ? `${alternateTitle}<br>` : ''}
+                ${address ? `${address}<br>` : ''}
+                ${mailcode ? `M/C: ${mailcode}<br>` : ''}
+                ${phoneType ? `${phoneType}: ${phone}${fax ? ` | Fax: ${fax}` : ''}<br>` : ''}
+                <a href="mailto:${email}" style="color: ${color1}; text-decoration: none;">${email}</a><br>
+                <img src="static/logo2.jpg" alt="Company Logo ID=${fingerprint}" width="100">
+            </div>`;
 
         // Insert the generated signature into the output container
         signatureOutput.innerHTML = signatureHTML;
-
-        // Display the signature and the copy button
-        signatureOutput.style.display = 'block';
-        copyButton.style.display = 'block';
+        signatureOutput.style.display = 'block'; // Make the signature visible
+        copyButton.style.display = 'block'; // Show the copy button
     });
 
     // Handle the copy-to-clipboard functionality
     copyButton.addEventListener('click', () => {
-        const range = document.createRange();
-        range.selectNodeContents(signatureOutput);
-        const selection = window.getSelection();
+        const range = document.createRange(); // Create a range object
+        range.selectNodeContents(signatureOutput); // Select the contents of the signature output
+        const selection = window.getSelection(); // Get the current selection
         selection.removeAllRanges(); // Clear previous selections
-        selection.addRange(range);
+        selection.addRange(range); // Add the new range
+
         try {
-            // Execute the copy command
-            document.execCommand('copy');
-            alert('Signature copied to clipboard!');
-            window.location.href = './index.html#6';
+            if (navigator.clipboard) {
+                // Use Clipboard API if available
+                navigator.clipboard.writeText(signatureOutput.innerText)
+                    .then(() => alert('Signature copied to clipboard!'))
+                    .then(() => window.location.href = 'index.html#6') // Success message, redirect to next slide
+                    .catch(err => alert('Failed to copy the signature.')); // Error message
+            } else {
+                // Fallback to older execCommand method
+                document.execCommand('copy');
+                alert('Signature copied to clipboard!');
+            }
         } catch (err) {
-            alert('Failed to copy the signature.');
+            alert('Failed to copy the signature.'); // Handle any errors
         }
 
         // Deselect the text after copying
