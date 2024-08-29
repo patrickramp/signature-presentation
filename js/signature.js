@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Fallback to older execCommand method
                 document.execCommand('copy');
                 alert('Signature copied to clipboard!');
+                window.location.href = 'index.html#6';
             }
         } catch (err) {
             alert('Failed to copy the signature.'); // Handle any errors

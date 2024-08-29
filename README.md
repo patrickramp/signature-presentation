@@ -6,11 +6,12 @@ This project is designed to help users understand the importance of a profession
 
 1. **JavaScript-Based Presentation:** An interactive presentation that educates users about the importance of having a consistent corporate signature and  how to use the email signature creation tool to add their signature to Outlook. 
 
-2. **Email Signature Creator:** A JavaScript web tool that allows users to generate a corporate compliant email signatures. Users can input details like name, title, contact information, and generate a signature that complies with their organization's brand identity. This application also adds a unique hash of the clients email address to the logo metadata to help verify the signature was created by this application.
-
+2. **Email Signature Creator:** A JavaScript web tool that allows users to generate uniformly formatted corporate email signatures, complete with logo. Users simply input their details and, with two clicks, have a perfectly formatted email signature copied and ready to be pasted into their email client of choice. 
+- As a security and compliance bonus, this application uses a lightweight Rust back-end service to securely sign the users email address and transparently add a unique identifier to the email signature. This "fingerprint-ID" is created using the (highly secure and efficient) Ed25519 signing algorithm and embedded as a base58 string in the alt-text of the signature logo. This fingerprint-ID cryptographically ties the generated signature to the email address used at signature creation, and can be used to verify the signature is legitimate. Since the fingerprint-ID is included in the image alt-text, it will work in both HTML and plane text emails. 
+ 
 ## Live Demo
 
-Click [Here](https://app.megabit.rodeo) for a live working demo of this project. 
+Click [Here](https://app2.megabit.rodeo) for a live working demo of this project. 
 
 ## Getting Started
 
@@ -21,6 +22,15 @@ git clone https://github.com/patrickramp/signature-presentation
 cd email-signature-tool
 open index.html
 ```
+
+You will also need the [signing-service](https://github.com/patrickramp/signing-service) to be running localy.
+
+```bash
+git clone https://github.com/patrickramp/signing-service
+cd signature-service
+cargo run </location/of/your/key.der>
+```
+
 
 ## Customization
 
